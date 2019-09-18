@@ -4,9 +4,13 @@
 
 <script>
 export default {
-  name: 'about',
-  resource: 'About',
+  name: 'blank',
+  resource: 'Blanks',
   data: () => ({
   })
 }
 </script>
+
+<style lang="scss">
+  @import "styles.scss";
+</style>

@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import About from "@/components/About";
-import Articles from "@/components/Articles";
-import Blanks from "@/components/Blanks";
-import Calculator from "@/components/Calculator";
-import Contacts from "@/components/Contacts";
-import Downloads from "@/components/Downloads";
-import Equipments from "@/components/Equipments/Equipments";
+import Home from '@/views/home'
+import About from '@/views/about'
+import Articles from '@/views/articles'
+import Blanks from '@/views/blanks'
+import Calculator from '@/views/calculator'
+import Contacts from '@/views/contacts'
+import Downloads from '@/views/downloads'
+import Equipments from '@/views/equipments'
 
 Vue.use(Router)
 

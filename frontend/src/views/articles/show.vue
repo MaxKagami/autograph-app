@@ -4,8 +4,8 @@
 
 <script>
 export default {
-  name: 'calculator',
-  resource: 'Calculator',
+  name: 'articles',
+  resource: 'articles',
   data: () => ({
   })
 }
