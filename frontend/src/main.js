@@ -7,9 +7,15 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import './assets/style.scss'
+import axios from './helpers/axios'
+import configs from './configs'
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
+
+Vue.prototype.$axios = axios
+Vue.prototype.$configs = configs
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
