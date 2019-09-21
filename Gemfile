@@ -10,6 +10,7 @@ gem 'rack-cors', '~> 1.0.3'
 gem 'redis', '~> 4.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt_sessions', '~> 2.3'
+gem 'jwt'
 
 group :development do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -18,6 +18,7 @@ export default new Router({
     { path: '/', name: 'home', component: Home },
     { path: '/about', name: 'about', component: About },
     { path: '/articles', name: 'articles', component: Articles },
+    { path: '/articles/:id', name: 'article', component: Articles, props: true },
     { path: '/blanks', name: 'blanks', component: Blanks },
     { path: '/calculator', name: 'calculator', component: Calculator },
     { path: '/contacts', name: 'contacts', component: Contacts },

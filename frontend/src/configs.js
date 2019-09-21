@@ -1,6 +1,5 @@
 export default {
-  backendUrl: 'http://localhost:3000/',
-  frontendUrl: 'http://localhost:3000/regop-komi-ru/',
+  backendUrl: 'http://localhost:3000',
   articles: {
     articles_resource: '/articles'
   }

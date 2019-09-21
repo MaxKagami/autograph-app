@@ -1,1 +1,12 @@
 @import "../../assets/style";
+
+.blog {
+  padding: 1px 0;
+  background-color: #ececec;
+}
+.blog_item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #d1d1d1;
+  padding: 40px 0;
+}
