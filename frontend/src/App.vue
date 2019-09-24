@@ -1,16 +1,16 @@
 <template>
-  <main>
-    <Navbar/>
-    <router-view id="app"/>
-    <Footer/>
-  </main>
+  <div id="app">
+    <comment :is="layout"/>
+  </div>
 </template>
 
 <script>
-import Navbar from '@/components/navbar'
-import Footer from '@/components/footer'
+const defaultLayout = 'public'
 export default {
-  name: 'App',
-  components: { Navbar, Footer }
+  computed: {
+    layout () {
+      return (this.$route.meta.layout || defaultLayout) + '-layout'
+    }
+  }
 }
 </script>

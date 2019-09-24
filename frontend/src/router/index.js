@@ -1,28 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/views/home'
-import About from '@/views/about'
-import Articles from '@/views/articles'
-import Blanks from '@/views/blanks'
-import Calculator from '@/views/calculator'
-import Contacts from '@/views/contacts'
-import Downloads from '@/views/downloads'
-import Equipments from '@/views/equipments'
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
-  linkActiveClass: 'active',
   routes: [
-    { path: '/', name: 'home', component: Home },
-    { path: '/about', name: 'about', component: About },
-    { path: '/articles', name: 'articles', component: Articles },
-    { path: '/articles/:id', name: 'article', component: Articles, props: true },
-    { path: '/blanks', name: 'blanks', component: Blanks },
-    { path: '/calculator', name: 'calculator', component: Calculator },
-    { path: '/contacts', name: 'contacts', component: Contacts },
-    { path: '/downloads', name: 'downloads', component: Downloads },
-    { path: '/equipments', name: 'equipments', component: Equipments }
+    { path: '/', name: 'home', meta: { layout: 'public' }, component: () => import('@/views/home') },
+    { path: '/about', name: 'about', meta: { layout: 'public' }, component: () => import('@/views/about') },
+    { path: '/articles', name: 'articles', meta: { layout: 'public' }, component: () => import('@/views/articles') },
+    { path: '/articles/:id', name: 'article', meta: { layout: 'public' }, component: () => import('@/views/articles/show'), props: true },
+    { path: '/blanks', name: 'blanks', meta: { layout: 'public' }, component: () => import('@/views/blanks') },
+    { path: '/calculator', name: 'calculator', meta: { layout: 'public' }, component: () => import('@/views/calculator') },
+    { path: '/contacts', name: 'contacts', meta: { layout: 'public' }, component: () => import('@/views/contacts') },
+    { path: '/downloads', name: 'downloads', meta: { layout: 'public' }, component: () => import('@/views/downloads') },
+    { path: '/equipments', name: 'equipments', meta: { layout: 'public' }, component: () => import('@/views/equipments') },
+    { path: '*', name: '404*', component: require('@/views/404').default },
+    {
+      path: '/admin',
+      name: 'admin',
+      meta: { layout: 'admin' },
+      component: () => import('@/views/admin_panel/dashboard'),
+      children: [
+        { path: 'dashboard', name: 'dashboard', component: () => import('@/views/admin_panel/dashboard') }
+      ]
+    }
   ]
 })

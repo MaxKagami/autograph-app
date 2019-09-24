@@ -11,7 +11,7 @@ export default {
     article: [],
     isLoading: false
   }),
-  created() {
+  created () {
     this.getArticle(this.id)
   },
   methods: {
