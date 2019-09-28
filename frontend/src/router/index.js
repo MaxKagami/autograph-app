@@ -15,14 +15,14 @@ export default new Router({
     { path: '/downloads', name: 'downloads', meta: { layout: 'public' }, component: () => import('@/views/downloads') },
     { path: '/equipments', name: 'equipments', meta: { layout: 'public' }, component: () => import('@/views/equipments') },
     { path: '*', name: '404*', component: require('@/views/404').default },
-    {
-      path: '/admin',
-      name: 'admin',
-      meta: { layout: 'admin' },
-      component: () => import('@/views/admin_panel/dashboard'),
-      children: [
-        { path: 'dashboard', name: 'dashboard', component: () => import('@/views/admin_panel/dashboard') }
-      ]
-    }
+    { path: '/admin', name: 'dashboard', meta: { layout: 'admin' }, component: () => import('@/views/admin_panel/dashboard') }
+    //   path: '/admin',
+    //   name: 'admin',
+    //   meta: { layout: 'admin' },
+    //   component: () => import('@/views/admin_panel/dashboard'),
+    //   children: [
+    //     { path: '/admin/dashboard', name: 'dashboard', component: () => import('@/views/admin_panel/dashboard') }
+    //   ]
+    // }
   ]
 })

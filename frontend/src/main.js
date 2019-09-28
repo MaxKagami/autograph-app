@@ -11,6 +11,7 @@ import configs from './configs'
 
 import Public from './layouts/public'
 import Admin from './layouts/admin'
+import SidebarMenu from './components/sidebar'
 
 Vue.config.productionTip = false
 
@@ -25,6 +26,7 @@ Vue.prototype.$configs = configs
 
 Vue.component('public-layout', Public)
 Vue.component('admin-layout', Admin)
+Vue.component('sidebar-menu', SidebarMenu)
 
 /* eslint-disable no-new */
 new Vue({
