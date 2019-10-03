@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :articles
+      resources :users
     end
   end
 
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
 
   post 'refresh', controller: :refresh, action: :create
   post 'signin', controller: :signin, action: :create
-  post 'signin', controller: :signin, action: :destroy
+  delete 'signin', controller: :signin, action: :destroy
+
+  post 'signup', controller: :signup, action: :create
 
 end

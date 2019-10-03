@@ -59,6 +59,10 @@
       </div>
     </div>
     <slot name="footer" />
+    <button class="vsm--exit-btn"
+            :class="{'vsm--exit-btn_slot' : $slots['exit-icon']}"
+            @click="signOut">
+    </button>
     <button v-if="!hideToggle"
             class="vsm--toggle-btn"
             :class="{'vsm--toggle-btn_slot' : $slots['toggle-icon']}"
@@ -84,11 +88,11 @@ export default {
     },
     collapsed: {
       type: Boolean,
-      default: false
+      default: true
     },
     width: {
       type: String,
-      default: '350px'
+      default: '200px'
     },
     widthCollapsed: {
       type: String,
@@ -220,6 +224,15 @@ export default {
       this.mobileItemTimeout = setTimeout(() => {
         this.mobileItem = null
       }, 600)
+    },
+    signOut () {
+      this.$http.secured.delete('/signin')
+        .then(response => {
+          delete localStorage.csrf
+          delete localStorage.signedIn
+          this.$router.replace('/')
+        })
+        .catch(error => this.setError(error, 'Ошибка при выходе из учётной записи'))
     }
   },
   provide () {

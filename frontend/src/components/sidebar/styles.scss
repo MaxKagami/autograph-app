@@ -1,5 +1,6 @@
+@import "../../assets/colours";
 /************************** VARIABLES ******************************/
-$primary-color: #4285f4 !default;
+$primary-color: $yellow !default;
 $base-bg: #2a2a2e !default;
 
 $item-color: #fff !default;
@@ -16,8 +17,8 @@ $icon-active-bg: $icon-bg !default;
 $icon-open-color: #fff !default;
 $icon-open-bg: transparent !default;
 
-$mobile-item-color: #fff !default;
-$mobile-icon-color: #fff !default;
+$mobile-item-color: #000 !default;
+$mobile-icon-color: #000 !default;
 $mobile-item-bg: $primary-color !default;
 $mobile-icon-bg: $icon-open-bg !default;
 
@@ -164,6 +165,23 @@ $icon-width: 30px !default;
     width: 100%;
     &:after {
       content: '\f337';
+      font-family: 'Font Awesome 5 Free';
+    }
+    &_slot:after {
+      display: none;
+    }
+  }
+  .vsm--exit-btn {
+    display: block;
+    text-align: center;
+    font-style: normal;
+    font-weight: 900;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    &:after {
+      content: '\f011';
       font-family: 'Font Awesome 5 Free';
     }
     &_slot:after {
@@ -338,7 +356,7 @@ $icon-width: 30px !default;
     color: $item-color;
     background-color: darken( $base-bg, 5% );
   }
-  .vsm--toggle-btn {
+  .vsm--toggle-btn, .vsm--exit-btn {
     color: $item-color;
     background-color: darken( $base-bg, 5% );
   }

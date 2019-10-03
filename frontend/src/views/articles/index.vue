@@ -12,7 +12,9 @@
             <h3>{{ article.title }}</h3>
             <p>{{ article.subtitle }}</p>
             <p>
-              <a href="">Подробнее</a>
+              <router-link :to="{ name: 'article', params: { id: article.id } }">
+                Подробнее
+              </router-link>
             </p>
           </b-col>
         </b-row>

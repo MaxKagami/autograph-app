@@ -1,5 +1,11 @@
 <template>
-  <div></div>
+  <div>
+    <b-container>
+      <b-img :src="getImageURL(article.image)"/>
+      <h1>{{ article.title }}</h1>
+      <span v-html="article.text"/>
+    </b-container>
+  </div>
 </template>
 
 <script>
@@ -27,3 +33,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  @import "styles";
+</style>
