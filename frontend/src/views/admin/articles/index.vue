@@ -2,13 +2,49 @@
   <div>
 
       <h1 class="d-inline">Публикации</h1>
-      <b-button size="sm"
+      <b-button v-b-modal.addingModal
+                size="sm"
                 class="d-inline font-weight-bold"
                 variant="warning"
                 squared>
         <v-icon name="plus"/>
         Добавить
       </b-button>
+
+      <b-modal id="addingModal"
+               title="Новая статья"
+               size="xl"
+               header-bg-variant="dark"
+               hide-footer>
+        <template v-slot:modal-header="{ close }">
+          <div class="ml-auto">
+            <b-button type="submit"
+                      size="sm"
+                      variant="outline-warning"
+                      squared>
+              Опубликовать</b-button>
+            <b-button size="sm"
+                      variant="outline-warning"
+                      squared
+                      @click="close()">
+              Отмена
+            </b-button>
+          </div>
+        </template>
+        <b-form @submit.prevent="addArticle">
+          <b-form-group id="input-group-title"
+                        label="Заголовок"
+                        label-for="input-title">
+            <b-form-input id="input-title" v-model="newArticle.title"/>
+          </b-form-group>
+          <b-form-group id="input-group-subtitle"
+                        label="Подзаголовок"
+                        label-for="input-subtitle">
+            <b-form-input id="input-subtitle" v-model="newArticle.subtitle"/>
+          </b-form-group>
+          <editor-content :editor="editor" />
+        </b-form>
+      </b-modal>
 
     <b-table :items="articles"
              :fields="fields"
@@ -69,8 +105,12 @@
 </template>
 
 <script>
+import { Editor, EditorContent } from 'tiptap'
 export default {
   name: 'admin-articles',
+  components: {
+    EditorContent
+  },
   data: () => ({
     fields: [
       { key: 'id', label: '№' },
@@ -85,7 +125,11 @@ export default {
       content: ''
     },
     articles: [ 'id', 'title', 'subtitle', 'date' ],
-    error: ''
+    newArticle: [],
+    error: '',
+    editor: new Editor({
+      content: '<p>This is just a boring paragraph</p>'
+    })
   }),
   created () {
     if (!localStorage.signedIn) {
@@ -112,7 +156,31 @@ export default {
     resetInfoModal () {
       this.infoModal.title = ''
       this.infoModal.content = ''
+    },
+    addArticle () {
+      const value = this.newArticle
+      if (!value) {
+        return
+      }
+      this.$http.secured.post('/api/v1/articles/', { article:
+        {
+          title: this.newArticle.title,
+          subtitle: this.newArticle.subtitle,
+          text: this.newArticle.text,
+          image: this.newArticle.image,
+          date: this.newArtice.date
+        }
+      })
+        .then(response => {
+          this.records.push(response.data)
+          this.newRecord = ''
+        })
+        .catch(error => this.setError(error, 'Невозможно создать статью'))
     }
+  },
+  beforeDestroy () {
+    // Always destroy your editor instance when it's no longer needed
+    this.editor.destroy()
   }
 }
 </script>

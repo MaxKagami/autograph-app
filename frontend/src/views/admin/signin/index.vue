@@ -1,14 +1,21 @@
 <template>
-  <div id="signin">
-    <form @submit.prevent="signin" class="form-signin">
-      <h1 class="form-signin-heading text-muted">Авторизация</h1>
+  <div class="signin">
+    <b-form @submit.prevent="signin" class="form-signin">
+      <h1 class="form-signin-heading">Авторизация</h1>
       <div class="text-red" v-if="error">{{ error }}</div>
-      <input type="email" v-model="email" class="form-control" placeholder="Email">
-      <input type="password" v-model="password" class="form-control" placeholder="Пароль">
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <b-form-input type="email"
+                    v-model="email"
+                    placeholder="Email"/>
+      <b-form-input type="password"
+                    v-model="password"
+                    placeholder="Пароль"/>
+      <b-button type="submit"
+                class="font-weight-bold"
+                block variant="warning"
+                squared>
         Войти
-      </button>
-    </form>
+      </b-button>
+    </b-form>
   </div>
 </template>
 
