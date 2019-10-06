@@ -16,6 +16,7 @@
                size="xl"
                header-bg-variant="dark"
                hide-footer>
+
         <template v-slot:modal-header="{ close }">
           <div class="ml-auto">
             <b-button type="submit"
@@ -31,6 +32,7 @@
             </b-button>
           </div>
         </template>
+
         <b-form @submit.prevent="addArticle">
           <b-form-group id="input-group-title"
                         label="Заголовок"
@@ -42,7 +44,9 @@
                         label-for="input-subtitle">
             <b-form-input id="input-subtitle" v-model="newArticle.subtitle"/>
           </b-form-group>
-          <editor-content :editor="editor" />
+
+          <editor/>
+
         </b-form>
       </b-modal>
 
@@ -105,12 +109,8 @@
 </template>
 
 <script>
-import { Editor, EditorContent } from 'tiptap'
 export default {
   name: 'admin-articles',
-  components: {
-    EditorContent
-  },
   data: () => ({
     fields: [
       { key: 'id', label: '№' },
@@ -126,10 +126,7 @@ export default {
     },
     articles: [ 'id', 'title', 'subtitle', 'date' ],
     newArticle: [],
-    error: '',
-    editor: new Editor({
-      content: '<p>This is just a boring paragraph</p>'
-    })
+    error: ''
   }),
   created () {
     if (!localStorage.signedIn) {
@@ -177,10 +174,6 @@ export default {
         })
         .catch(error => this.setError(error, 'Невозможно создать статью'))
     }
-  },
-  beforeDestroy () {
-    // Always destroy your editor instance when it's no longer needed
-    this.editor.destroy()
   }
 }
 </script>
