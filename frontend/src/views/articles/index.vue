@@ -1,14 +1,14 @@
 <template>
-  <div class="blog">
+  <div class="blog_index">
     <h1 class="header color-yellow">Новости и статьи по теме ГЛОНАСС мониторинга и тахографии</h1>
     <b-container>
       <div class="blog_item" v-for="article in articles" :key="article">
         <b-row>
-          <b-col>
+          <b-col class="col_left">
             <b-img :src="getImageURL(article.image)"/>
-            <span>{{ article.date }}</span>
+            <span>{{ article.date | moment("DD.MM.YYYY") }}</span>
           </b-col>
-          <b-col>
+          <b-col class="col_right">
             <h3>{{ article.title }}</h3>
             <p>{{ article.subtitle }}</p>
             <p>

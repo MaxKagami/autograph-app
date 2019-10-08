@@ -8,7 +8,7 @@
           :class="{ 'is-active': isActive.bold() }"
           @click="commands.bold"
         >
-          <icon name="bold" />
+          <v-icon name="bold"/>
         </button>
 
         <button
@@ -16,7 +16,7 @@
           :class="{ 'is-active': isActive.italic() }"
           @click="commands.italic"
         >
-          <icon name="italic" />
+          <v-icon name="italic"/>
         </button>
 
         <button
@@ -24,7 +24,7 @@
           :class="{ 'is-active': isActive.strike() }"
           @click="commands.strike"
         >
-          <icon name="strike" />
+          <v-icon name="strikethrough"/>
         </button>
 
         <button
@@ -32,7 +32,7 @@
           :class="{ 'is-active': isActive.underline() }"
           @click="commands.underline"
         >
-          <icon name="underline" />
+          <v-icon name="underline"/>
         </button>
 
         <button
@@ -40,7 +40,7 @@
           :class="{ 'is-active': isActive.code() }"
           @click="commands.code"
         >
-          <icon name="code" />
+          <v-icon name="code"/>
         </button>
 
         <button
@@ -48,7 +48,7 @@
           :class="{ 'is-active': isActive.paragraph() }"
           @click="commands.paragraph"
         >
-          <icon name="paragraph" />
+          <v-icon name="paragraph"/>
         </button>
 
         <button
@@ -80,7 +80,7 @@
           :class="{ 'is-active': isActive.bullet_list() }"
           @click="commands.bullet_list"
         >
-          <icon name="ul" />
+          <v-icon name="list-ul" />
         </button>
 
         <button
@@ -88,7 +88,7 @@
           :class="{ 'is-active': isActive.ordered_list() }"
           @click="commands.ordered_list"
         >
-          <icon name="ol" />
+          <v-icon name="list-ol" />
         </button>
 
         <button
@@ -96,7 +96,7 @@
           :class="{ 'is-active': isActive.blockquote() }"
           @click="commands.blockquote"
         >
-          <icon name="quote" />
+          <v-icon name="quote-right"/>
         </button>
 
         <button
@@ -104,28 +104,28 @@
           :class="{ 'is-active': isActive.code_block() }"
           @click="commands.code_block"
         >
-          <icon name="code" />
+          <v-icon name="terminal" />
         </button>
 
         <button
           class="menubar__button"
           @click="commands.horizontal_rule"
         >
-          <icon name="hr" />
+          <v-icon name="grip-lines"/>
         </button>
 
         <button
           class="menubar__button"
           @click="commands.undo"
         >
-          <icon name="undo" />
+          <v-icon name="undo" />
         </button>
 
         <button
           class="menubar__button"
           @click="commands.redo"
         >
-          <icon name="redo" />
+          <v-icon name="redo" />
         </button>
 
       </div>
@@ -136,7 +136,6 @@
 </template>
 
 <script>
-import Icon from './icon'
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
 import {
   Blockquote,
@@ -161,8 +160,7 @@ export default {
   name: 'editor',
   components: {
     EditorContent,
-    EditorMenuBar,
-    Icon
+    EditorMenuBar
   },
   data: () => ({
     editor: new Editor({
@@ -195,5 +193,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  @import "style.scss";
 </style>

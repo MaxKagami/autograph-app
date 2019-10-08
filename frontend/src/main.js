@@ -10,15 +10,15 @@ import Vicon from 'vue-awesome/components/Icon'
 import './assets/style.scss'
 import axios, { securedAxiosInstance, plainAxiosInstance } from './helpers/axios'
 import configs from './configs'
-import svgSpriteLoader from './helpers/svg-sprite-loader'
+// import svgSpriteLoader from './helpers/svg-sprite-loader'
 
 import Public from './layouts/public/index'
 import Admin from './layouts/admin/index'
 import SidebarMenu from './components/sidebar'
 import Editor from './components/editor/index'
 
-const __svg__ = { path: './components/editor/icons/*.svg', name: '.components/editor/[hash].sprite.svg' }
-svgSpriteLoader(__svg__.filename)
+// const __svg__ = { path: './components/editor/icons/*.svg', name: './components/editor/[hash].sprite.svg' }
+// svgSpriteLoader(__svg__.filename)
 
 Vue.config.productionTip = false
 

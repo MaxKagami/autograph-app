@@ -1,10 +1,17 @@
 <template>
-  <div>
-    <b-container>
+  <div class="blog_show">
+    <div class="cover">
       <b-img :src="getImageURL(article.image)"/>
-      <h1>{{ article.title }}</h1>
+      <div class="cover__carrier loaded"></div>
+      <div class="cover__filter"></div>
+      <b-container>
+        <h1>{{ article.title }}</h1>
+        <span>{{ article.subtitle }}</span>
+      </b-container>
+    </div>
+    <div class="content">
       <span v-html="article.text"/>
-    </b-container>
+    </div>
   </div>
 </template>
 
@@ -23,7 +30,7 @@ export default {
   methods: {
     async getArticle (id) {
       this.isLoading = true
-      const { data } = await this.$axios(this.$configs.articles.articles_resource + id)
+      const { data } = await this.$axios(this.$configs.articles.articles_resource + '/' + id)
       this.isLoading = false
       this.article = data
     },

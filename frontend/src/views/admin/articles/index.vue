@@ -1,54 +1,17 @@
 <template>
   <div>
 
-      <h1 class="d-inline">Публикации</h1>
-      <b-button v-b-modal.addingModal
-                size="sm"
-                class="d-inline font-weight-bold"
-                variant="warning"
-                squared>
-        <v-icon name="plus"/>
-        Добавить
-      </b-button>
+    <h1 class="d-inline">Публикации</h1>
+    <b-button v-b-modal.addingModal
+              size="sm"
+              class="d-inline font-weight-bold"
+              variant="warning"
+              squared>
+      <v-icon name="plus"/>
+      Добавить
+    </b-button>
 
-      <b-modal id="addingModal"
-               title="Новая статья"
-               size="xl"
-               header-bg-variant="dark"
-               hide-footer>
-
-        <template v-slot:modal-header="{ close }">
-          <div class="ml-auto">
-            <b-button type="submit"
-                      size="sm"
-                      variant="outline-warning"
-                      squared>
-              Опубликовать</b-button>
-            <b-button size="sm"
-                      variant="outline-warning"
-                      squared
-                      @click="close()">
-              Отмена
-            </b-button>
-          </div>
-        </template>
-
-        <b-form @submit.prevent="addArticle">
-          <b-form-group id="input-group-title"
-                        label="Заголовок"
-                        label-for="input-title">
-            <b-form-input id="input-title" v-model="newArticle.title"/>
-          </b-form-group>
-          <b-form-group id="input-group-subtitle"
-                        label="Подзаголовок"
-                        label-for="input-subtitle">
-            <b-form-input id="input-subtitle" v-model="newArticle.subtitle"/>
-          </b-form-group>
-
-          <editor/>
-
-        </b-form>
-      </b-modal>
+    <New/>
 
     <b-table :items="articles"
              :fields="fields"
@@ -109,8 +72,10 @@
 </template>
 
 <script>
+import New from './new'
 export default {
   name: 'admin-articles',
+  components: { New },
   data: () => ({
     fields: [
       { key: 'id', label: '№' },
@@ -178,6 +143,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 @import "styles.scss";
 </style>
