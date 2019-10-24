@@ -5,12 +5,12 @@
                 :interval="3500"
                 img-width="100%"
                 img-height="392px">
-      <b-carousel-slide :img-src="require('./carousel/1.jpg')"></b-carousel-slide>
-      <b-carousel-slide :img-src="require('./carousel/2.jpg')"></b-carousel-slide>
-      <b-carousel-slide :img-src="require('./carousel/3.jpg')"></b-carousel-slide>
-      <b-carousel-slide :img-src="require('./carousel/4.jpg')"></b-carousel-slide>
-      <b-carousel-slide :img-src="require('./carousel/5.jpg')"></b-carousel-slide>
-      <b-carousel-slide :img-src="require('./carousel/6.jpg')"></b-carousel-slide>
+      <b-carousel-slide :img-src="require('./carousel/1.jpg')"/>
+      <b-carousel-slide :img-src="require('./carousel/2.jpg')"/>
+      <b-carousel-slide :img-src="require('./carousel/3.jpg')"/>
+      <b-carousel-slide :img-src="require('./carousel/4.jpg')"/>
+      <b-carousel-slide :img-src="require('./carousel/5.jpg')"/>
+      <b-carousel-slide :img-src="require('./carousel/6.jpg')"/>
     </b-carousel>
     <div class="content-container">
       <b-row>

@@ -25,25 +25,18 @@
     </template>
 
     <b-form @submit.prevent="addArticle">
-      <b-form-group id="input-group-title"
-                    label="Заголовок"
-                    label-for="input-title">
-        <b-form-input id="input-title" v-model="newArticle.title"/>
-      </b-form-group>
 
-      <b-form-group id="input-group-subtitle"
-                    label="Подзаголовок"
-                    label-for="input-subtitle">
-        <b-form-input id="input-subtitle" v-model="newArticle.subtitle"/>
-      </b-form-group>
+      <b-form-input id="input-title" v-model="newArticle.title" placeholder="Заголовок"/>
 
-      <div v-if="!image">
+      <b-form-input id="input-subtitle" v-model="newArticle.subtitle" placeholder="Подзаголовок"/>
+
+      <div v-if="!image" id="addingModal_image">
         <b-form-file @change="onFileChange"
                      v-model="image"
                      placeholder="Выберите изображение или перетащите его сюда..."
                      drop-placeholder="Перетащите файл сюда..."/>
       </div>
-      <div v-else>
+      <div v-else id="addingModal_image_loaded">
         <b-button @click="removeImage"
                   block
                   squared
@@ -53,18 +46,30 @@
         <img :src="image"/>
       </div>
 
-      <editor/>
+      <datepicker v-model="newArticle.date"
+                  id="input-date"
+                  :language="ru"
+                  format="d MMMM yyyy"
+                  placeholder="Дата публикации"/>
+
+      <editor v-model="newArticle.text"/>
+
     </b-form>
 
   </b-modal>
 </template>
 
 <script>
+import Datepicker from 'vuejs-datepicker'
+import { ru } from 'vuejs-datepicker/dist/locale'
 export default {
   name: 'new-article',
+  components: { Datepicker },
   data: () => ({
     newArticle: [],
     image: '',
+    editor: null,
+    ru: ru,
     error: ''
   }),
   methods: {
@@ -82,7 +87,7 @@ export default {
           subtitle: this.newArticle.subtitle,
           text: this.newArticle.text,
           image: this.newArticle.image,
-          date: this.newArtice.date
+          date: this.newArticle.date
         }
       })
         .then(response => {
@@ -116,5 +121,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "styles";
+  @import "style";
 </style>

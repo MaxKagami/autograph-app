@@ -1,10 +1,12 @@
 <template>
-  <div>
+  <div id="admin-articles">
 
     <h1 class="d-inline">Публикации</h1>
+
     <b-button v-b-modal.addingModal
-              size="sm"
+              id="admin-articles-add"
               class="d-inline font-weight-bold"
+              size="sm"
               variant="warning"
               squared>
       <v-icon name="plus"/>
@@ -25,19 +27,22 @@
         {{ data.value | moment("DD/MM/YY HH:mm") }}
       </template>
 
-      <template v-slot:cell(actions)="row">
+      <template v-slot:cell(action1)="row">
         <b-button class="mr-1 font-weight-bold"
-                  variant="warning"
+                  variant="light"
                   size="sm"
                   squared
                   @click="info(row.item, $event.target)">
-          Показать
+          <v-icon name="edit" class="colour-black"/>
         </b-button>
+      </template>
+
+      <template v-slot:cell(action2)="row">
         <b-button class="mr-1 font-weight-bold"
-                  variant="danger"
+                  variant="light"
                   size="sm"
                   squared>
-          Удалить
+          <v-icon name="times" class="colour-red"/>
         </b-button>
       </template>
 
@@ -82,7 +87,8 @@ export default {
       { key: 'date', label: 'Дата публикации' },
       { key: 'title', label: 'Заголовок' },
       { key: 'subtitle', label: 'Подзаголовок' },
-      { key: 'actions', label: 'Действия' }
+      { key: 'action1', label: '' },
+      { key: 'action2', label: '' }
     ],
     infoModal: {
       id: 'info-modal',
@@ -95,7 +101,7 @@ export default {
   }),
   created () {
     if (!localStorage.signedIn) {
-      this.$router.replace('/admin')
+      this.$router.replace('/signin')
     } else {
       this.$http.secured.get('/api/v1/articles')
         .then(response => { this.articles = response.data })
@@ -118,31 +124,11 @@ export default {
     resetInfoModal () {
       this.infoModal.title = ''
       this.infoModal.content = ''
-    },
-    addArticle () {
-      const value = this.newArticle
-      if (!value) {
-        return
-      }
-      this.$http.secured.post('/api/v1/articles/', { article:
-        {
-          title: this.newArticle.title,
-          subtitle: this.newArticle.subtitle,
-          text: this.newArticle.text,
-          image: this.newArticle.image,
-          date: this.newArtice.date
-        }
-      })
-        .then(response => {
-          this.records.push(response.data)
-          this.newRecord = ''
-        })
-        .catch(error => this.setError(error, 'Невозможно создать статью'))
     }
   }
 }
 </script>
 
 <style lang="scss">
-@import "styles.scss";
+@import "style";
 </style>

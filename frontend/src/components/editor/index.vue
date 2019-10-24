@@ -162,8 +162,12 @@ export default {
     EditorContent,
     EditorMenuBar
   },
+  props: [ 'value' ],
   data: () => ({
-    editor: new Editor({
+    editor: null
+  }),
+  mounted () {
+    this.editor = new Editor({
       extensions: [
         new Blockquote(),
         new BulletList(),
@@ -183,12 +187,26 @@ export default {
         new Underline(),
         new History()
       ],
-      content: '<p>This is just a boring paragraph</p>'
+      content: this.value,
+      onUpdate: ({ getHTML }) => {
+        this.$emit('input', getHTML())
+      }
     })
-  }),
+    this.editor.setContent(this.value)
+  },
   beforeDestroy () {
     // Always destroy your editor instance when it's no longer needed
-    this.editor.destroy()
+    if (this.editor) {
+      this.editor.destroy()
+    }
+  },
+  watch: {
+    value (val) {
+      // so cursor doesn't jump to start on typing
+      if (this.editor && val !== this.value) {
+        this.editor.setContent(val, true)
+      }
+    }
   }
 }
 </script>

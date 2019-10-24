@@ -1,6 +1,6 @@
 <template>
   <div class="signin">
-    <b-form @submit.prevent="signin" class="form-signin">
+    <b-form @submit.prevent="signin" class="form-signin" autocomplete="off">
       <h1 class="form-signin-heading">Авторизация</h1>
       <div class="text-red" v-if="error">{{ error }}</div>
       <b-form-input type="email"
