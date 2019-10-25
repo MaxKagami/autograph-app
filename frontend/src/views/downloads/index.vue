@@ -11,6 +11,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  @import "styles";
+<style lang="sass">
+  @import "style.sass"
 </style>

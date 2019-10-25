@@ -1,0 +1,31 @@
+@import "../../../assets/style.sass"
+
+#users
+  width: 700px
+  margin: auto
+  &-add
+    float: right
+
+  table
+    thead th
+      text-align: center
+      &:nth-child(1)
+        width: 3%
+      &:nth-child(n+5)
+        width: 3%
+
+    tbody td
+      &:nth-child(1)
+        text-align: center
+        font-weight: bold
+
+      &:nth-child(n+2):nth-child(-n+4)
+        padding-left: 5px
+
+      &:nth-child(n+5)
+        padding: 0
+        vertical-align: middle
+        button
+          margin: 0!important
+          height: 100%
+          width: 100%

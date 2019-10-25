@@ -63,6 +63,6 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-  @import "style";
+<style lang="sass">
+  @import "style.sass"
 </style>

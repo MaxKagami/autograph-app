@@ -32,7 +32,6 @@ export default new Router({
       ]
     },
     { path: '/signin', name: 'signin', component: () => import('@/views/admin/signin') },
-    { path: '/signup', name: 'signup', component: () => import('@/views/admin/signup') },
     { path: '/centr-gaz', beforeEnter () { location.href = 'http://www.centr-gaz.ru/' } }
   ]
 })
