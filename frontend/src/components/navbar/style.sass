@@ -1,6 +1,7 @@
 @import "../../assets/style.sass"
 
 .navbar
+  font-family: "Roboto Light"
   display: flex
   justify-content: center
   width: 100%
@@ -10,27 +11,36 @@
   padding-bottom: 0
   &-brand
     z-index: 1000
-  &-nav li:hover>.dropdown-menu
-    display: block
+  &-nav
+    .nav-item
+      .nav-link
+        svg
+          margin-right: 4px
+          margin-bottom: 2px
+          color: $yellow
+        &:hover
+          svg
+            color: $black
+    li:hover>.dropdown-menu
+      display: block
+    .dropdown-menu
+      border: 1px solid #707070
+      background: rgba(48,48,48,0.95)
+      padding: 10px 0
+      margin-top: 0
+      border-radius: 0
+      .dropdown-item
+        &:hover
+          background: none
+          color: #fac913!important
 
-.dropdown-menu
-  border: 1px solid #707070
-  background: rgba(48,48,48,0.95)
-  padding: 10px 0
-  margin-top: 0
-  border-radius: 0
-  .dropdown-item
-    &:hover
-      background: none
-      color: #fac913!important
-
-.nav-link
-  svg
-    color: $yellow
-
-  &:hover
-    svg
-      color: $black
+.nav_upper
+  &_phone, &_email
+    .nav-link
+      font-size: 1.2em
+      color: $yellow!important
+  //&_btn
+  //  clear: left!important
 
 .dropdown-toggle::after
   content: none

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <b-carousel id="carousel-1"
+  <div id='home'>
+    <b-carousel id="home_carousel"
                 indicators
                 :interval="3500"
                 img-width="100%"

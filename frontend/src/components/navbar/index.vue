@@ -17,10 +17,17 @@
       <b-navbar-toggle target="nav-collapse"/>
 
       <div class="flex-column">
-        <b-navbar-nav class='nav-upper'>
-          <b-nav-item class='font-phone' :href="'callto:' + phone_merged">{{ phone }}</b-nav-item>
-          <b-nav-item class='font-email' :href="'mailto:' + email">{{ email }}</b-nav-item>
-          <b-button to='/admin' variant='outline-warning' size='sm' squraed>Войти в личный кабинет</b-button>
+        <b-navbar-nav class='nav_upper' right>
+          <b-nav-item class='nav_upper_phone' :href="'callto:' + phone_merged">{{ phone }}</b-nav-item>
+          <b-nav-item class='nav_upper_email' :href="'mailto:' + email">{{ email }}</b-nav-item>
+          <b-nav-item class='nav_upper_btn'>
+            <b-button to='/admin'
+                      variant='outline-warning'
+                      size='sm'
+                      squared>
+              Войти в личный кабинет
+            </b-button>
+          </b-nav-item>
         </b-navbar-nav>
 
         <b-collapse id="nav-collapse" is-nav>
@@ -65,7 +72,7 @@
               <v-icon name="file-download"/>
               Загрузки
             </b-nav-item>
-            <b-nav-item to="/contacts">
+            <b-nav-item to="/">
               <v-icon name="info"/>
               По "автограф"</b-nav-item>
             <b-nav-item to="/contacts">

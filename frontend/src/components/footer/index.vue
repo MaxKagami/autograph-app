@@ -1,93 +1,113 @@
 <template>
-  <footer>
-    <b-container class="front">
-      <b-row class="footer-landing">
-        <b-col cols="3" class="left">
-          <b-img :src="require('./cars.gif')"></b-img>
-          <p>У нас уже более</p>
-          <p class="customers-number">{{ customers }}</p>
-          <p>довольных абонентов по всей России</p>
+  <footer class='footer'>
+    <b-container class='front'>
+      <b-row class='footer_landing'>
+        <b-col cols='3' class='footer_landing_left'>
+          <div class='footer_landing_left_content'>
+            <b-img :src="require('./cars.gif')"/>
+            <p>У нас уже более</p>
+            <p class="customers-number">{{ customers }}</p>
+            <p>довольных абонентов по всей России</p>
+          </div>
         </b-col>
-        <b-col cols="6" class="center">
-          <div class="">
+        <b-col cols="6" class="footer_landing_center">
+          <div class="footer_landing_center_content">
             <h4>Остались вопросы?</h4>
-            <p>Закажите косультацию у специалиста!</p></div>
+            <p>Закажите консультацию у специалиста!</p>
+          </div>
         </b-col>
-        <b-col cols="3">
-          <b-form @submit="onsubmit">
+        <b-col cols="3" class="footer_landing_right">
+          <b-form @submit='onsubmit' v-if='form_show' class='callback-form'>
             <b-row>
               <b-form-input class="squared margin-bottom dark-input"
-                            v-model="name"
+                            v-model="form.name"
                             placeholder="Имя"
                             type="name"
+                            size="sm"
                             required/>
             </b-row>
             <b-row>
-              <b-form-input class="squared margin-bottom dark-input "
-                            v-model="email"
+              <b-form-input class="squared margin-bottom dark-input"
+                            v-model="form.email"
                             placeholder="Email"
                             type="text"
+                            size="sm"
                             required/>
             </b-row>
             <b-row>
-              <b-form-input class="squared margin-bottom dark-input "
-                            v-model="phone"
+              <b-form-input v-model='form.phone'
+                            class='squared margin-bottom dark-input'
                             placeholder="Телефон"
-                            type="phone"
+                            type='phone'
+                            size="sm"
                             required/>
-              <b-button class="yellow-background"
+              <b-form-checkbox v-model='form.consent' class='consent' value="true">
+                Соглашаюсь на обработку персональных данных
+              </b-form-checkbox>
+              <b-button class='yellow-background'
                         block
-                        type="submit"
-                        variant="warning">
+                        size="sm"
+                        type='submit'
+                        variant='warning'>
                 Заказать
               </b-button>
             </b-row>
           </b-form>
         </b-col>
       </b-row>
-      <b-row class="footer-menu">
-        <b-col cols="4">
-          <b-row>Оборудование</b-row>
-          <b-row>Датчики уровня топлива</b-row>
-          <b-row>Бытовые котроллеры</b-row>
-          <b-row>Периферия</b-row>
-          <b-row>Персональные трекеры</b-row>
-          <b-row>Дисплеи водителя</b-row>
-          <b-row>Тахографы</b-row>
-          <b-row>Видеонаблюдение для транспорта</b-row>
+      <b-row class='footer_menu'>
+        <b-col cols='4' class='footer_menu_items'>
+          <a class='footer_menu_items_link' href='#'>Оборудование</a>
+          <ul>
+            <li><a href='#'>Датчики уровня топлива</a></li>
+            <li><a href='#'>Бытовые котроллеры</a></li>
+            <li><a href='#'>Периферия</a></li>
+            <li><a href='#'>Персональные трекеры</a></li>
+            <li><a href='#'>Дисплеи водителя</a></li>
+            <li><a href='#'>Тахографы</a></li>
+            <li><a href='#'>Видеонаблюдение для транспорта</a></li>
+          </ul>
         </b-col>
-        <b-col cols="4">
-          <b-row>Услуги</b-row>
-          <b-row>Контроль местоположения</b-row>
-          <b-row>Контроль расхода топлива</b-row>
-          <b-row>Перевод на наше обслуживание</b-row>
-          <b-row>Видеонаблюдение для автотранспорта</b-row>
-          <b-row>Диспетчеризация вашего автопарка</b-row>
-          <b-row>Установка тахографов</b-row>
-          <b-row>Замена блока НКМ (СКЗИ)</b-row>
+        <b-col cols='4' class='footer_menu_items'>
+          <a class='footer_menu_items_link' href='#'>Услуги</a>
+          <ul>
+            <li><a href='#'>Контроль местоположения</a></li>
+            <li><a href='#'>Контроль расхода топлива</a></li>
+            <li><a href='#'>Перевод на наше обслуживание</a></li>
+            <li><a href='#'>Видеонаблюдение для автотранспорта</a></li>
+            <li><a href='#'>Диспетчеризация вашего автопарка</a></li>
+            <li><a href='#'>Установка тахографов</a></li>
+            <li><a href='#'>Замена блока НКМ (СКЗИ)</a></li>
+          </ul>
         </b-col>
-        <b-col cols="4">
-          <b-row>Статьи</b-row>
-          <b-row>Одометр vs ГЛОНАСС: что точнее?</b-row>
-          <b-row>3 способа контроля расхода топлива</b-row>
-          <b-row>Нормы расхода топлива автомобилей КАМАЗ</b-row>
-          <b-row>Все, что нужно знать о контроле качества вождения</b-row>
-          <b-row>Как остаться «на плаву» в сельском хозяйстве?</b-row>
-          <b-row>Путевые листы: шаблоны, примеры, пояснения</b-row>
-          <b-row>Как обезопасить себя от воровства спецтехники?</b-row>
+        <b-col cols='4' class='footer_menu_items'>
+          <a class='footer_menu_items_link' href='#'>Статьи</a>
+          <ul>
+            <li><a href='#'>Одометр vs ГЛОНАСС: что точнее?</a></li>
+            <li><a href='#'>3 способа контроля расхода топлива</a></li>
+            <li><a href='#'>Нормы расхода топлива автомобилей КАМАЗ</a></li>
+            <li><a href='#'>Все, что нужно знать о контроле качества вождения</a></li>
+            <li><a href='#'>Как остаться «на плаву» в сельском хозяйстве?</a></li>
+            <li><a href='#'>Путевые листы: шаблоны, примеры, пояснения</a></li>
+            <li><a href='#'>Как обезопасить себя от воровства спецтехники?</a></li>
+          </ul>
         </b-col>
       </b-row>
-      <b-row class="footer-bottom">
-        <b-col>
-          <b-row>
-            ЦентГАЗ Ухта 2019. Администратор сайта:
-            <a href="mailto:example@mail.com">example@mail.com</a>
+      <b-row class="footer_bottom">
+        <b-col cols='5'>
+          <b-row class='footer_bottom_left'>
+            ЦентГАЗ™ Ухта 2019. Администратор сайта:
+            <a href="mailto:example@mail.com" class='footer_bottom_left_link'>example@mail.com</a>
           </b-row>
-          <b-row>
-            <a href="">Согласие на обработку персональных данных</a>
+          <b-row class='footer_bottom_agreement'>
+            <a href='#' class='footer_bottom_agreement_link'>Согласие на обработку персональных данных</a>
           </b-row>
         </b-col>
-        <b-col></b-col>
+        <b-col cols='7'>
+          <a href="#">
+            <b-img :src="require('./vk-link.png')"/>
+          </a>
+        </b-col>
       </b-row>
     </b-container>
   </footer>
@@ -98,7 +118,14 @@ export default {
   name: 'footer',
   resource: 'Footer',
   data: () => ({
-    customers: '350 000'
+    customers: '350 000',
+    form: {
+      name: '',
+      phone: '',
+      email: '',
+      consent: false
+    },
+    form_show: true
   })
 }
 </script>

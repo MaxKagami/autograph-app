@@ -1,5 +1,10 @@
 <template>
-  <div></div>
+  <div id='blanks'>
+    <b-container>
+      <h1>Бланки заявок на выполнение работ для наших клиентов</h1>
+      Загрузите нужный Вам бланк с примером заполнения
+    </b-container>
+  </div>
 </template>
 
 <script>

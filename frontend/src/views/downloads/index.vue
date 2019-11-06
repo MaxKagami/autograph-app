@@ -1,5 +1,9 @@
 <template>
-  <div></div>
+  <div id='downloads'>
+    <b-container>
+      <h1>Скачайте файлы на свой компьютер</h1>
+    </b-container>
+  </div>
 </template>
 
 <script>
